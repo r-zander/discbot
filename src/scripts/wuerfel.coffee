@@ -39,26 +39,15 @@ rollDice = (post, match) ->
     # only show # of dice if > 1
     dice = if dice > 1 then dice else ''
 
-    message = "@#{post.username} "
-    if dice > 1
-      message += "die"
-    else
-      message += "der"
-    message += " #{dice}W#{sides}#{modifierString} "
-
-    if dice > 1
-      message += "sind"
-    else
-      message += "ist"
-    message += " gefallen:"
-
-    if extraText.length > 1
-      message += " '#{extraText}'"
+    message = "@#{post.username} Ergebnis des #{dice}W#{sides}#{modifierString} Wurfs: "
 
     if rolls.length > 1
-      message += " #{rolls.join(", ")} (#{sum})"
+      message += " **#{rolls.join(", ")} (#{sum})**"
     else
-      message += " #{sum}"
+      message += " **#{sum}**"
+
+    if extraText.length > 1
+      message += " - #{extraText}"
 
   return message
 
